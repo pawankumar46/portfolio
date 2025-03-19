@@ -19,7 +19,8 @@ const Navbar = () => {
     <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm fixed w-full z-50 shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+          {/* Logo */}
+          <Link to="/" className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
             Pawan Kumar
           </Link>
 
@@ -42,8 +43,9 @@ const Navbar = () => {
 
           {/* Mobile Navigation Button */}
           <button
-            className="md:hidden text-gray-600 dark:text-gray-300"
+            className="md:hidden text-gray-600 dark:text-gray-300 p-10"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isOpen ? (
@@ -57,18 +59,18 @@ const Navbar = () => {
 
         {/* Mobile Navigation Menu */}
         {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="md:hidden fixed left-0 right-0 top-16 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg border-t border-gray-200 dark:border-gray-700">
+            <div className="container mx-auto px-8 py-3">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
+                  onClick={() => setIsOpen(false)}
                   className={`${
                     isActive(link.path)
                       ? "bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400"
                       : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
-                  } block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200`}
-                  onClick={() => setIsOpen(false)}
+                  } block px-6 py-2 rounded-lg text-base font-medium transition-colors duration-200 mb-2`}
                 >
                   {link.label}
                 </Link>
