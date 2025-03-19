@@ -11,7 +11,7 @@ import Skills from "./pages/Skills";
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50/50 to-blue-50/50 dark:from-gray-900 dark:to-black">
         <Navbar />
         <main className="container mx-auto px-4 py-8 min-h-[calc(100vh-140px)]">
           <Routes>

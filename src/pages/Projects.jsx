@@ -28,37 +28,45 @@ const projects = [
 const Projects = () => {
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-4xl font-bold text-gray-900 text-center mb-8">My Projects</h1>
+      <h1 className="text-4xl font-bold bg-gradient-to-r from-primary-700 to-secondary-700 text-transparent bg-clip-text text-center mb-12">
+        My Projects
+      </h1>
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            whileHover={{ scale: 1.05 }}
-            className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 transition-all duration-300"
+            whileHover={{ scale: 1.02, y: -5 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="group bg-white/80 backdrop-blur-sm hover:bg-white/95 
+                     shadow-lg hover:shadow-xl rounded-2xl p-6 
+                     border border-gray-100 transition-all duration-300"
           >
             {/* Project Title */}
-            <h2 className="text-2xl font-bold text-gray-900">{project.title}</h2>
+            <h2 className="text-2xl font-bold text-gray-800 group-hover:text-primary-600 
+                         transition-colors duration-300 mb-4">
+              {project.title}
+            </h2>
 
             {/* Project Description */}
-            <p className="text-gray-700 mt-3">{project.description}</p>
+            <p className="text-gray-600 leading-relaxed mb-6">
+              {project.description}
+            </p>
 
             {/* Tech Stack */}
-            <div className="flex flex-wrap gap-2 mt-4">
+            <div className="flex flex-wrap gap-2 mt-auto">
               {project.tech.map((tech, idx) => (
-                <span key={idx} className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">
+                <span 
+                  key={idx} 
+                  className="px-3 py-1 bg-primary-50 text-primary-600 
+                           rounded-full text-sm font-medium"
+                >
                   {tech}
                 </span>
               ))}
             </div>
-
-            {/* Project Link Button */}
-            <a
-              href={project.link}
-              className="inline-block mt-5 bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition"
-            >
-              View Project 🚀
-            </a>
           </motion.div>
         ))}
       </div>
