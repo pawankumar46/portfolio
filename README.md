@@ -1,12 +1,41 @@
-# React + Vite
+# Frontend Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a personal portfolio website built using Vite and React, designed to showcase projects, skills, and experience.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
+- **Frontend:** React, Vite, Tailwind CSS, Framer Motion, React Icons
+- **Routing:** React Router
+- **Deployment:** Vercel
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Features
+- About Me section
+- Skills showcase with icons and animations
+- Projects display with interactive cards
+- Work Experience
+- Contact page with LinkedIn, GitHub, email, and phone number
 
-## Expanding the ESLint configuration
+## 🔧 Getting Started
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1️⃣ Clone the Repository
+```sh
+git clone https://github.com/your-username/portfolio.git
+cd portfolio
+```
+
+### 2️⃣ Install Dependencies
+```sh
+yarn install  # or npm install
+```
+
+### 3️⃣ Run the Development Server
+```sh
+yarn dev  # or npm run dev
+```
+
+### 4️⃣ Build for Production
+```sh
+yarn build  # or npm run build
+```
+
+## 📄 License
+MIT License
