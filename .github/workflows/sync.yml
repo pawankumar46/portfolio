@@ -1,3 +1,21 @@
+name: Two-way sync
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+concurrency:
+  group: sync-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.SYNC_PAT }}
       - name: Push to peer repo
         env:
           PEER: ${{ vars.PEER_REPO }}
@@ -5,5 +23,11 @@
         run: |
           PEER=$(echo "$PEER" | tr -d '[:space:]')
           TOKEN=$(echo "$TOKEN" | tr -d '[:space:]')
+          BR=${{ github.ref_name }}
           git remote add peer "https://x-access-token:${TOKEN}@github.com/${PEER}.git"
-          git push peer HEAD:${{ github.ref_name }}
+          git fetch peer
+          if git rev-parse --verify -q "peer/$BR" >/dev/null && git merge-base --is-ancestor HEAD "peer/$BR"; then
+            echo "Peer already has this commit, nothing to do"
+          else
+            git push peer HEAD:$BR
+          fi
