@@ -1,0 +1,22 @@
+name: Two-way sync
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+concurrency:
+  group: sync-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.SYNC_PAT }}
+      - name: Push to peer repo
+        run: |
+          git remote add peer https://x-access-token:${{ secrets.SYNC_PAT }}@github.com/${{ vars.PEER_REPO }}.git
+          git push peer HEAD:${{ github.ref_name }}
