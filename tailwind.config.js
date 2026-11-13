@@ -1,18 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        ink: "#08090B",
-        muted: "#5A5C61",
-        surface: "#F0EDE6",
-        accent: "#CDF22B",
-        field: "#08090B",
-        ivory: "#FAF8F3",
+        ink: "#0A0A0F",
+        night: "#12121A",
+        violet: { DEFAULT: "#7C3AED", soft: "#A78BFA" },
+        coral: "#FF4D6D",
+        lime: "#C6F432",
+        mist: "#A1A1B5",
       },
       fontFamily: {
-        sans: ['"Bricolage Grotesque"', "system-ui", "sans-serif"],
+        display: ['"Space Grotesk"', "system-ui", "sans-serif"],
+        sans: ['"Inter"', "system-ui", "sans-serif"],
+      },
+      maxWidth: {
+        page: "88rem",
       },
     },
   },
